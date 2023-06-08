@@ -11,6 +11,9 @@ import {
 import Auth from '../utils/auth';
 import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
+
+import {Link} from 'react-router-dom';
+import {useMutation} from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutation';
 
 const SearchBooks = () => {
@@ -45,6 +48,12 @@ const SearchBooks = () => {
 
     try {
       const response = await searchGoogleBooks(searchInput);
+
+      const {data} = saveBook({
+        variables: {
+          ...formState
+        }
+      });
 
       if (!response.ok) {
         throw new Error('something went wrong!');
