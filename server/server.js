@@ -6,7 +6,7 @@ const routes = require('./routes');
 const {authMiddleware} = require('./utils/auth');
 
 
-const {resolvers, typeDefs} = require('./schemas');
+const {resolvers, typeDefs} = require('./schema');
 const app = express();
 const server = new ApolloServer({
   resolvers,
